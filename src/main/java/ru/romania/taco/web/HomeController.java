@@ -1,4 +1,4 @@
-package ru.romania.taco;
+package ru.romania.taco.web;
 
 
 import org.springframework.stereotype.Controller;
