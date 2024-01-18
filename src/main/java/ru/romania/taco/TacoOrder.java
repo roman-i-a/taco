@@ -2,6 +2,8 @@ package ru.romania.taco;
 
 import lombok.Data;
 
+import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 @Data
-public class TacoOrder {
+public class TacoOrder implements Serializable{
+
+    private static final long serialVersionUID = 1L;
+    private long id;
+    private Date placedAt;
 
     @NotBlank(message="Delivery name is required")
     private String deliveryName;
