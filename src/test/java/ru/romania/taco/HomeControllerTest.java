@@ -27,4 +27,13 @@ public class HomeControllerTest {
                 .andExpect(content()
                         .string(containsString("Taco Cloud")));
     }
+
+    @Test
+    public void testHelloPage() throws Exception {
+        mockMvc.perform(get("/hello"))
+            .andExpect(status().isOk())
+            .andExpect(view().name("hello"))
+            .andExpect(content()
+                .string(containsString("Hello, World!")));
+    }
 }
