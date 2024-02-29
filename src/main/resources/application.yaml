@@ -2,3 +2,11 @@ spring:
     datasource:
         generate-unique-name: false
         name: tacocloud
+
+    jpa:
+        hibernate:
+            ddl-auto: none
+
+    sql:
+        init:
+            mode: always
