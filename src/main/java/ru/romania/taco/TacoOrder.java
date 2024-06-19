@@ -2,7 +2,9 @@ package ru.romania.taco;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
@@ -13,7 +15,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 @Data
-public class TacoOrder {
+public class TacoOrder implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private Long id;
+    private Date placedAt;
 
     @NotBlank(message="Delivery name is required")
     private String deliveryName;
