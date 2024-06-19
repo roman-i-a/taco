@@ -9,7 +9,7 @@ import ru.romania.taco.data.IngredientRepository;
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
-    private final IngredientRepository ingredientRepository;
+    private IngredientRepository ingredientRepository;
 
     public IngredientByIdConverter(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;

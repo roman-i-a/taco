@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -34,7 +32,7 @@ public class DesignTacoController {
 
     private final IngredientRepository ingredientRepository;
 
-    public DesignTacoController(IngredientRepository ingredientRepository) {
+        public DesignTacoController(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }
 

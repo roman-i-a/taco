@@ -14,7 +14,6 @@ import ru.romania.taco.Ingredient;
 public class JdbcIngredientRepository implements IngredientRepository {
 
     private JdbcTemplate jdbcTemplate;
-    
 
     public JdbcIngredientRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -22,34 +21,32 @@ public class JdbcIngredientRepository implements IngredientRepository {
 
     private Ingredient mapRowToIngredient(ResultSet row, int rowNum) throws SQLException {
         return new Ingredient(
-            row.getString("id"), 
-            row.getString("name"), 
-            Ingredient.Type.valueOf(row.getString("type")));
+                row.getString("id"),
+                row.getString("name"),
+                Ingredient.Type.valueOf(row.getString("type")));
     }
 
     @Override
     public Iterable<Ingredient> findAll() {
         return jdbcTemplate.query("select id, name, type from Ingredient",
-            this::mapRowToIngredient);
+                this::mapRowToIngredient);
     }
 
     @Override
     public Optional<Ingredient> findById(String id) {
         List<Ingredient> results = jdbcTemplate.query("select id, name, type from Ingredient where id = ?",
-        this::mapRowToIngredient,
-        id);
-        return results.size() == 0 ?
-            Optional.empty() :
-            Optional.of(results.get(0));
+                this::mapRowToIngredient,
+                id);
+        return results.size() == 0 ? Optional.empty() : Optional.of(results.get(0));
     }
 
     @Override
     public Ingredient save(Ingredient ingredient) {
-        jdbcTemplate.update("insert into Ingredient (id, name, type) values (?, ?, ?)", 
-        ingredient.getId(),
-        ingredient.getName(),
-        ingredient.getType().toString());
+        jdbcTemplate.update("insert into Ingredient (id, name, type) values (?, ?, ?)",
+                ingredient.getId(),
+                ingredient.getName(),
+                ingredient.getType().toString());
         return ingredient;
     }
-    
+
 }
