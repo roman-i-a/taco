@@ -1,0 +1,6 @@
+# path to db 
+#   jdbc:h2:mem:tacocloud
+spring:
+    datasource:
+        generate-unique-name: false
+        name: tacocloud

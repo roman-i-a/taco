@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Order Form</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Order Form</h1>
+            <div class="grid">
+                <div class="col">
+                    <form method="post" th:action="@{/orders}" th:object="${tacoOrder}">
+                        <!-- Тут ссылка на создание еще одного тако -->
+                        <a th:href="@{/design}" id="another">Design another taco</a></br>
+
+                        <!-- Тут список всех созданных тако -->
+                        <h3>Your taco in this order:</h3>
+                        <ul>
+                            <li th:each="taco : ${tacoOrder.tacos}">
+                            <span th:text="${taco.name}">taco Name</span></li>
+                        </ul>
+
+                        <h3>Deliver my taco to:</h3>
+                        <label for="deliveryName">Name: </label>
+                        <input type="text" th:field="*{deliveryName}">
+                        <span class="validationError" th:if="${#fields.hasErrors('deliveryName')}" th:errors="*{deliveryName}">Delivery name error</span>
+                        </br>
+
+                        <label for="deliveryStreet">Street: </label>
+                        <input type="text" th:field="*{deliveryStreet}">
+                        <span class="validationError" th:if="${#fields.hasErrors('deliveryStreet')}" th:errors="*{deliveryStreet}">Street error</span>
+                        </br>
+
+                        <label for="deliveryCity">City: </label>
+                        <input type="text" th:field="*{deliveryCity}">
+                        <span class="validationError" th:if="${#fields.hasErrors('deliveryCity')}" th:errors="*{deliveryCity}">City error</span>
+                        </br>
+
+                        <label for="deliveryState">State: </label>
+                        <input type="text" th:field="*{deliveryState}">
+                        <span class="validationError" th:if="${#fields.hasErrors('deliveryState')}" th:errors="*{deliveryState}">State error</span>
+                        </br>
+
+                        <label for="deliveryZip">Zip: </label>
+                        <input type="text" th:field="*{deliveryZip}">
+                        <span class="validationError" th:if="${#fields.hasErrors('deliveryZip')}" th:errors="*{deliveryZip}">Zip error</span>
+                        </br>
+
+                        
+                        <h3>Choose your payment method</h3>
+                        <label for="ccNumber">Credit card number: </label>
+                        <input type="text" th:field="*{ccNumber}">
+                        <span class="validationError" th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}">Zip error</span>
+                        </br>
+
+                        <label for="ccExpiration">Expiration: </label>
+                        <input type="text" th:field="*{ccExpiration}">
+                        <span class="validationError" th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccExpiration}">Expiration error</span>
+                        </br>
+
+                        <label for="ccCVV">Credit card CVV: </label>
+                        <input type="text" th:field="*{ccCVV}">
+                        <span class="validationError" th:if="${#fields.hasErrors('ccCVV')}" th:errors="*{ccCVV}">CVV error</span>
+                        </br>
+                        
+                        <input type="submit" value="Submit Order">
+                    </form>
+                </div>
+            </div>
+        </div>    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    </body>    
+</html>
