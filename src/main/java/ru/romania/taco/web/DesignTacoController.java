@@ -1,28 +1,24 @@
 package ru.romania.taco.web;
 
-import lombok.extern.slf4j.Slf4j;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jakarta.validation.Valid;
-
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
+import lombok.extern.slf4j.Slf4j;
 import ru.romania.taco.Ingredient;
+import ru.romania.taco.Ingredient.Type;
 import ru.romania.taco.Taco;
 import ru.romania.taco.TacoOrder;
-import ru.romania.taco.Ingredient.Type;
 import ru.romania.taco.data.IngredientRepository;
-
-import org.springframework.web.bind.annotation.PostMapping;
 
 @Slf4j
 @Controller
@@ -32,7 +28,7 @@ public class DesignTacoController {
 
     private final IngredientRepository ingredientRepository;
 
-        public DesignTacoController(IngredientRepository ingredientRepository) {
+    public DesignTacoController(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }
 
