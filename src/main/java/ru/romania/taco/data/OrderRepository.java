@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import ru.romania.taco.TacoOrder;
 
-public interface OrderRepository extends CrudRepository<TacoOrder, String> {
+public interface OrderRepository extends CrudRepository<TacoOrder, Long> {
 }
