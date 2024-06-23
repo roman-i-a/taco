@@ -36,6 +36,7 @@ public class OrderController {
             return "orderForm";
         }
         orderRepository.save(order);
+        log.info("Order saved. [%s]", order.toString());
         sessionStatus.setComplete();
         return "redirect:/";
     }
