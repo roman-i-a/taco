@@ -1,6 +1,10 @@
 # path to db 
 #   jdbc:h2:mem:tacocloud
-spring:
-    datasource:
-        generate-unique-name: false
-        name: tacocloud
+spring:     
+    cassandra:
+        keyspace-name: tacocloud
+        schema-action: recreate
+        local-datacenter: datacenter1
+        # contact-points:
+        # - localhost
+        port: 9043
