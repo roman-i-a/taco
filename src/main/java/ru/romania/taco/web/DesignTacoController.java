@@ -18,7 +18,6 @@ import ru.romania.taco.Ingredient;
 import ru.romania.taco.Ingredient.Type;
 import ru.romania.taco.Taco;
 import ru.romania.taco.TacoOrder;
-import ru.romania.taco.TacoUDT;
 import ru.romania.taco.data.IngredientRepository;
 
 @Slf4j
@@ -67,7 +66,7 @@ public class DesignTacoController {
         }
 
         
-        tacoOrder.addTaco(new TacoUDT(taco.getName(), taco.getIngredients()));
+        tacoOrder.addTaco(taco);
         log.info("Processing taco: {}", taco);
         return "redirect:/orders/current";
     }
